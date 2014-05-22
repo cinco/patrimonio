@@ -26,13 +26,14 @@
 
 <?php
     
-    include '/patrimonio/funcoes.php';
+    include 'funcoes.php';
     boasvindas($_SESSION['login']);
     echo ('Você está logado com a conta: ' . $_SESSION['login']); 
+    
 ?>
 <br>
 <br>
 <a href="cadastrousuario.php">Cadastro de Usuários!</a>
-
+<a href="listausuario.php">Listar Usuários!</a>
 </body>
 </html>

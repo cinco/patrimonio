@@ -21,9 +21,14 @@
 </head>
 
 <body>
+	<?php 
+
+	echo ('Você está logado com a conta: ' . $_SESSION['login']);
+
+	?>
 <div id = "areacadastrousuario">
 	<p class = "cadastrousuario">Cadastrar Novo Usuário</p>
-		<form method="post" action="validacadusu.php" name="formcadastrousuario" id="formcadastrousuario" >
+		<form method="post" action="validacaocadusu.php" name="formcadastrousuario" id="formcadastrousuario" >
 	<p class = "formulariocadastrousuario">
 		<br>
 	<table>
@@ -47,9 +52,21 @@
 	</tr>
 	<tr>
 		<td><label>Tipo Usuário: </label>
-			<input type="text" name="tipousuario" id="tipousuario" /></td>
-		<td><label>Código da Empresa: </label>
-			<input type="text" name="codigoempresa" id="codigoempresa" /></td>
+			<input type="radio" name="tipousuario" id="tipousuario" value="2"> Cliente? </input></td>
+		<td><label>Empresa: </label>
+			<select name="codigoempresa" id="codigoempresa">
+			<option>Selecione a empresa...</option>
+			<?php
+				 include 'conexaobd.php';
+				 $listaempresas = mysql_query("SELECT codigo_empresa, razao_social FROM cadastro_empresa");
+				 while($empresa = mysql_fetch_array($listaempresas)) { ?>
+				 <option value="<?php echo $empresa['codigo_empresa'] ?>"><?php echo $empresa['razao_social'] ?></option>
+				 <?php 
+				 mysql_close($conexao);
+				 }
+			?>
+			</select>
+		</td>
 	</tr>
 	<tr>
 		<td><input type="reset" value="Limpar Campos" /></td>
@@ -58,7 +75,7 @@
 	</table>
 		<br>
 	</p>
+</form>
 </div>
 </body>
-
 </html>

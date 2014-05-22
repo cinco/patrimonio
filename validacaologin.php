@@ -1,13 +1,13 @@
 <?php ob_start();
 
 	//Acessando variaveis do arquivo conexaobd.php
-	include '/patrimonio/banco/conexaobd.php';
+	include 'conexaobd.php';
 
 	//Variáveis recebendo os dados inserios em login.php
 	$login = $_POST['login'];
 	$senha = $_POST['senha'];
 	
-	//Comando para verificação de autenticidade
+	//Buscando se o usuário está cadastrado no banco de dados
 	$busca = "SELECT * FROM cadastro_usuario WHERE login = '$login' AND senha = '$senha'";
 	$resultado = mysql_query($busca, $conexao) or die ('Erro na seleção da tabela!');
 
@@ -17,6 +17,7 @@
 		session_start();
 		$_SESSION['login'] = $login;
 		$_SESSION['senha'] = $senha;
+		mysql_close($conexao);
 		header('location:index.php');
 		
 		}
@@ -27,6 +28,7 @@
 		session_destroy();
 		unset($_SESSION['login']);
 		unset($_SESSION['senha']);
+		mysql_close($conexao);
 		header('location:login.php');
 	}
 ?>

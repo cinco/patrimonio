@@ -3,8 +3,8 @@
 		session_start();
 	 
 	 	//Acessando variaveis do arquivo conexaobd.php
-		include '/patrimonio/banco/conexaobd.php';
-		include '/patrimonio/funcoes.php';
+		include 'conexaobd.php';
+		include 'funcoes.php';
 
 		//Caso o usuário não esteja autenticado, limpa os dados e redireciona para a pagina login.php
 	if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
@@ -47,7 +47,6 @@
 		else {
 			
 			header('location:index.php');
-		
 		}
 
 	?>
