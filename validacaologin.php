@@ -8,6 +8,7 @@
 	$senha = $_POST['senha'];
 	
 	//Buscando se o usuário está cadastrado no banco de dados
+	
 	$busca = "SELECT * FROM cadastro_usuario WHERE login = '$login' AND senha = '$senha'";
 	$resultado = mysql_query($busca, $conexao) or die ('Erro na seleção da tabela!');
 

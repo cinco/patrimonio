@@ -1,7 +1,9 @@
 <?php
 	/* Obs: Funções para exibição de alerta javascript segue com esse padrão de nomeclatura das variaveis (msg + codigo + (nome ou abreviatura)da função)
-
+    
 	 */
+    include 'conexaobd.php';
+
 	function boasvindas($logado) {
 		$msgboasvindas = 'Seja bem vindo ';
         echo '<script type="text/javascript">alert("' . $msgboasvindas . $logado . '"); </script>';

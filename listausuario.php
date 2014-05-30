@@ -23,8 +23,20 @@
 <body>
 	<?php 
 
+	include 'conexaobd.php';
 	echo ('Você está logado com a conta: ' . $_SESSION['login']);
 
+	$query = "SELECT codigo_usuario, nome_completo, cpf, matricula, login, tipo_usuario FROM cadastro_usuario WHERE cpf = '089.413.224-57'";
+    $resultado = mysql_query($query, $conexao);
+
+    if (mysql_num_rows($resultado)){
+        while($escreve = mysql_fetch_array($resultado)){
+
+            	echo $escreve['codigo_usuario'] . " " . $escreve['nome_completo'] . " " . $escreve['cpf'] . " " . $escreve['matricula'] . " " . $escreve['login'] . " " . $escreve['tipo_usuario'] . "<br>";
+            }
+        } else {
+        	echo 'nenhum dado recebido!';
+      	}
 	?>
 <div id = "arealistausuario">
 	<p class = "listausuario">Buscar Usuário</p>
@@ -42,5 +54,46 @@
 	</p>
 </form>
 </div>
+<?php
+
+echo '<table>';
+    $query = "SELECT codigo_usuario, nome_completo, cpf, matricula, login, tipo_usuario FROM cadastro_usuario WHERE cpf = '089.413.224-56'";
+    $resultado = mysql_query($query, $conexao);
+    $linhas = mysql_num_rows($resultado);
+
+        if ($linhas){
+
+        	echo '<table>';
+            while($escreve = mysql_fetch_array($resultado)){
+        		
+                $codigo = $escreve['codigo_usuario'];
+                $nome = $escreve['nome_completo'];
+                $cpf = $escreve['cpf'];
+                $matricula = $escreve['matricula'];
+                $login = $escreve['login'];
+                $tipousuario = $escreve['tipo_usuario'];
+
+                    if ($linhas %2 == 0){
+
+                        $cor = "#F0F0F0";
+                    }
+
+                    else {
+
+                    $cor = "#E2EFFE";
+
+                    }
+
+                echo "<tr bgcolor=\"$cor\"><td>&nbsp;$codigo</td><td>&nbsp;$nome</td><td>&nbsp;$cpf</td><td>&nbsp;$matricula</td><td>&nbsp;$login</td><td>&nbsp;$tipousuario</td>";
+	           	//echo $escreve['codigo_usuario'] . " " . $escreve['nome_completo'] . " " . $escreve['cpf'] . " " . $escreve['matricula'] . " " . $escreve['login'] . " " . $escreve['tipo_usuario'] . "<br>";
+     
+            }
+            echo '</table>';
+        }
+
+        else {
+        	echo 'nenhum dado recebido!';
+        }
+?>
 </body>
 </html>

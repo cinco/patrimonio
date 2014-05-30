@@ -20,7 +20,7 @@
 	echo ('Você está logado com a conta: ' . $_SESSION['login']);
 	
 	//Variável recebendo o valore inserido em listausuario.php
-	$resultadometbusca = $_POST['mtbusca'];
+	/*$resultadometbusca = $_POST['mtbusca'];
 	
 	//Verificando o tipo de busca
 	if ($resultadometbusca == "nome"){
@@ -42,7 +42,7 @@
 
 
 	echo $dadobusca;
-
+	*/
 	//Inserindo dados no novo usuário no banco de dados
 	//$queryinsert = "INSERT INTO cadastro_usuario (nome_completo, cpf, matricula, login, senha, 
 	//	confirmar_senha, tipo_usuario, fk_codigo_empresa) VALUES ('$nome', '$cpf', '$matricula', '$login', '$senha',
