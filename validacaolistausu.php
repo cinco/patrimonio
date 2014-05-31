@@ -13,43 +13,206 @@
 
 ?>
 
+<html>
+<head>
+	<title>Resultado da Busca</title>
+	<meta charset="utf-8">
+</head>
+<body>
 <?php
-	
+
 	//Incluindo arquivo conexaobd.php
 	include 'conexaobd.php';
+	
+	$metododebusca = $_POST['mtbusca'];
+	$dadoparabusca = $_POST['dadobuscado'];
+	
 	echo ('Você está logado com a conta: ' . $_SESSION['login']);
+	echo '<br><br>';
+if 	($dadoparabusca != ""){
+	if ($metododebusca == "nome"){
+
+	echo 'Filtro usado na busca: ' . $dadoparabusca;
+	echo '<table>';
+    $query = "SELECT * FROM cadastro_usuario WHERE nome_completo = '$dadoparabusca'";
+    //$query = "SELECT codigo_usuario, nome_completo, cpf, matricula, login, tipo_usuario FROM cadastro_usuario WHERE cpf = '089.413.224-56'";
+    $resultado = mysql_query($query, $conexao);
+    $linhas = mysql_num_rows($resultado);
+
+        if ($linhas){
+
+        	echo '<table>';
+            while($escreve = mysql_fetch_array($resultado)){
+        		
+                $codigo = $escreve['codigo_usuario'];
+                $nome = $escreve['nome_completo'];
+                $cpf = $escreve['cpf'];
+                $matricula = $escreve['matricula'];
+                $login = $escreve['login'];
+                $tipousuario = $escreve['tipo_usuario'];
+
+                    if ($linhas %2 == 0){
+
+                        $cor = "#F0F0F0";
+                    }
+
+                    else {
+
+                    $cor = "#E2EFFE";
+
+                    }
+                echo "<tr bgcolor=\"$cor\"><td>Código</td><td>Nome</td><td>CPF</td><td>Matricula</td><td>Login</td><td>Tipo do Usuário</td>";
+                echo "<tr bgcolor=\"$cor\"><td>&nbsp;$codigo</td><td>&nbsp;$nome</td><td>&nbsp;$cpf</td><td>&nbsp;$matricula</td><td>&nbsp;$login</td><td>&nbsp;$tipousuario</td>";
+	           	//echo $escreve['codigo_usuario'] . " " . $escreve['nome_completo'] . " " . $escreve['cpf'] . " " . $escreve['matricula'] . " " . $escreve['login'] . " " . $escreve['tipo_usuario'] . "<br>";
+     
+            }
+            echo '</table>';
+        }
+
+        else {
+        	echo 'nenhum dado recebido!';
+        }
+    }
+
+  	if ($metododebusca == "cpf"){
 	
-	//Variável recebendo o valore inserido em listausuario.php
-	/*$resultadometbusca = $_POST['mtbusca'];
+	echo 'Filtro usado na busca: ' . $dadoparabusca;
+	echo '<table>';
+    $query = "SELECT * FROM cadastro_usuario WHERE cpf = '$dadoparabusca'";
+    $resultado = mysql_query($query, $conexao);
+    $linhas = mysql_num_rows($resultado);
+
+        if ($linhas){
+
+        	echo '<table>';
+            while($escreve = mysql_fetch_array($resultado)){
+        		
+                $codigo = $escreve['codigo_usuario'];
+                $nome = $escreve['nome_completo'];
+                $cpf = $escreve['cpf'];
+                $matricula = $escreve['matricula'];
+                $login = $escreve['login'];
+                $tipousuario = $escreve['tipo_usuario'];
+
+                    if ($linhas %2 == 0){
+
+                        $cor = "#F0F0F0";
+                    }
+
+                    else {
+
+                    $cor = "#E2EFFE";
+
+                    }
+
+                echo "<tr bgcolor=\"$cor\"><td>Código</td><td>Nome</td><td>CPF</td><td>Matricula</td><td>Login</td><td>Tipo do Usuário</td>";
+                echo "<tr bgcolor=\"$cor\"><td>&nbsp;$codigo</td><td>&nbsp;$nome</td><td>&nbsp;$cpf</td><td>&nbsp;$matricula</td><td>&nbsp;$login</td><td>&nbsp;$tipousuario</td>";
+     
+            }
+            echo '</table>';
+        }
+
+        else {
+        	echo 'nenhum dado recebido!';
+        }
+    }
+
+    if ($metododebusca == "matricula"){
 	
-	//Verificando o tipo de busca
-	if ($resultadometbusca == "nome"){
-		$buscapornome = "SELECT codigo_usuario, nome_completo, cpf, matricula, login, tipo_usuario WHERE nome_completo = '$resultadometbusca'";
-		$resultado = mysql_query($buscapornome, $conexao);
-		echo var_dump($resultado);
+   	echo 'Filtro usado na busca: ' . $dadoparabusca;
+	echo '<table>';
+    $query = "SELECT * FROM cadastro_usuario WHERE matricula = '$dadoparabusca'";
+    $resultado = mysql_query($query, $conexao);
+    $linhas = mysql_num_rows($resultado);
 
-	} elseif ($resultadometbusca == "cpf"){
-		$buscaporcpf = "SELECT codigo_usuario, nome_completo, cpf, matricula, login, tipo_usuario WHERE cpf = '$resultadometbusca'";
-		$resultado1 = mysql_query($buscaporcpf, $conexao);
-		echo var_dump($resultado1);
+        if ($linhas){
 
-	} elseif ($resultadometbusca == "matricula") {
-		$buscapormatricula = "SELECT codigo_usuario, nome_completo, cpf, matricula, login, tipo_usuario WHERE matricula = '$resultadometbusca'";
-		$resultado2 = mysql_query($buscapormatricula, $conexao);
-		echo var_dump($resultado);
-	}
+        	echo '<table>';
+            while($escreve = mysql_fetch_array($resultado)){
+        		
+                $codigo = $escreve['codigo_usuario'];
+                $nome = $escreve['nome_completo'];
+                $cpf = $escreve['cpf'];
+                $matricula = $escreve['matricula'];
+                $login = $escreve['login'];
+                $tipousuario = $escreve['tipo_usuario'];
 
+                    if ($linhas %2 == 0){
 
+                        $cor = "#F0F0F0";
+                    }
 
-	echo $dadobusca;
-	*/
-	//Inserindo dados no novo usuário no banco de dados
-	//$queryinsert = "INSERT INTO cadastro_usuario (nome_completo, cpf, matricula, login, senha, 
-	//	confirmar_senha, tipo_usuario, fk_codigo_empresa) VALUES ('$nome', '$cpf', '$matricula', '$login', '$senha',
-	//	'$confirmacaosenha', '$tipousuario', '$codigoempresa')";
+                    else {
+
+                    $cor = "#E2EFFE";
+
+                    }
+
+                echo "<tr bgcolor=\"$cor\"><td>Código</td><td>Nome</td><td>CPF</td><td>Matricula</td><td>Login</td><td>Tipo do Usuário</td>";
+                echo "<tr bgcolor=\"$cor\"><td>&nbsp;$codigo</td><td>&nbsp;$nome</td><td>&nbsp;$cpf</td><td>&nbsp;$matricula</td><td>&nbsp;$login</td><td>&nbsp;$tipousuario</td>";
+     
+            }
+            echo '</table>';
+        }
+
+        else {
+        	echo 'nenhum dado recebido!';
+        }
+    }
+
+}	elseif ($metododebusca == "todos"){
 	
-	//mysql_query($queryinsert, $conexao) or die ('Erro no cadastro!');
+   	echo 'Filtro usado na busca = Todos';
+	echo '<table>';
+    $query = "SELECT * FROM cadastro_usuario";
+    $resultado = mysql_query($query, $conexao);
+    $linhas = mysql_num_rows($resultado);
 
-//	echo ('Cadastro Realizado com sucesso!');
-//	mysql_close($conexao);
+        if ($linhas){
+
+        	echo '<table>';
+        	$cor = "#90EE90";
+            echo "<tr bgcolor=\"$cor\"><td>Código</td><td>Nome</td><td>CPF</td><td>Matricula</td><td>Login</td><td>Tipo do Usuário</td>";
+
+            while($escreve = mysql_fetch_array($resultado)){
+        		
+                $codigo = $escreve['codigo_usuario'];
+                $nome = $escreve['nome_completo'];
+                $cpf = $escreve['cpf'];
+                $matricula = $escreve['matricula'];
+                $login = $escreve['login'];
+                $tipousuario = $escreve['tipo_usuario'];
+                
+
+
+                    if ($linhas %2 == 0){
+
+                        $cor = "#F0F0F0";
+                    }
+
+                    else {
+
+                    $cor = "#E2EFFE";
+
+                    }
+
+                echo "<tr bgcolor=\"$cor\"><td>&nbsp;$codigo</td><td>&nbsp;$nome</td><td>&nbsp;$cpf</td><td>&nbsp;$matricula</td><td>&nbsp;$login</td><td>&nbsp;$tipousuario</td>";
+     
+            }
+            echo '</table>';
+        }
+
+        else {
+        	echo 'nenhum dado recebido!';
+        }
+    }
+
+    else {
+
+    	echo 'Nenhum dado fornecido para busca!';
+    }
+
+    
 ?>
+</body>
+</html>

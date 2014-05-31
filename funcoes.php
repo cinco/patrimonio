@@ -20,8 +20,5 @@
         echo '<script type="text/javascript">alert("' . $msgprebvf . '"); </script>';
     }
 
-    /*function erroselecaotabela(){
-        $msgest = 'Erro na seleção da tabela!'
-        echo '<script type="text/javascript">alert("' . $msgest . '"); </script>';
-    }*/
+    
 ?>
