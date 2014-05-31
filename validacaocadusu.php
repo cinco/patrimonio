@@ -29,11 +29,9 @@
 	$codigoempresa = $_POST['codigoempresa'];
 
 	//Inserindo dados no novo usuário no banco de dados
-	$queryinsert = "INSERT INTO cadastro_usuario (nome_completo, cpf, matricula, login, senha, 
-		confirmar_senha, tipo_usuario, fk_codigo_empresa) VALUES ('$nome', '$cpf', '$matricula', '$login', '$senha',
-		'$confirmacaosenha', '$tipousuario', '$codigoempresa')";
+	$queryinsert = "INSERT INTO cadastro_usuario (nome_completo, cpf, matricula, login, senha, confirmar_senha, tipo_usuario, fk_codigo_empresa) VALUES ('$nome', '$cpf', '$matricula', '$login', '$senha', '$confirmacaosenha', '$tipousuario', '$codigoempresa')";
 	
-	mysql_query($queryinsert, $conexao) or die ('Erro no cadastro!');
+	mysql_query($queryinsert, $conexao) or die (mysql_error());
 
 	echo ('Cadastro Realizado com sucesso!');
 	mysql_close($conexao);

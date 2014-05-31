@@ -2,7 +2,8 @@
 
 <head>
 <title>Login</title>
-<link rel="stylesheet" type="text/css" href="estilo.css">
+<link rel="stylesheet" type="text/css" href="estilo.css" />
+<link rel="stylesheet" type="text/javascript" href="validacoes.js" />
 <meta charset="utf-8">
 </head>
 

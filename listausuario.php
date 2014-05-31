@@ -25,18 +25,7 @@
 
 	include 'conexaobd.php';
 	echo ('Você está logado com a conta: ' . $_SESSION['login']);
-
-	$query = "SELECT codigo_usuario, nome_completo, cpf, matricula, login, tipo_usuario FROM cadastro_usuario WHERE cpf = '089.413.224-57'";
-    $resultado = mysql_query($query, $conexao);
-
-    if (mysql_num_rows($resultado)){
-        while($escreve = mysql_fetch_array($resultado)){
-
-            	echo $escreve['codigo_usuario'] . " " . $escreve['nome_completo'] . " " . $escreve['cpf'] . " " . $escreve['matricula'] . " " . $escreve['login'] . " " . $escreve['tipo_usuario'] . "<br>";
-            }
-        } else {
-        	echo 'nenhum dado recebido!';
-      	}
+ß
 	?>
 <div id = "arealistausuario">
 	<p class = "listausuario">Buscar Usuário</p>
@@ -48,16 +37,19 @@
 		<input type="radio" name="mtbusca" id="nome" value="nome">Nome</input>
 		<input type="radio" name="mtbusca" id="cpf" value="cpf">CPF</input>
 		<input type="radio" name="mtbusca" id="matricula" value="matricula">Matricula</input>
+        <input type="radio" name="mtbusca" id="todos" value="todos">Todos</input>
 		<input type="text" name="dadobuscado" id="dadobuscado" />
 		<input type="submit" value="Buscar"> 
 		<br>
 	</p>
 </form>
 </div>
+<div id="oculta">
 <?php
 
 echo '<table>';
-    $query = "SELECT codigo_usuario, nome_completo, cpf, matricula, login, tipo_usuario FROM cadastro_usuario WHERE cpf = '089.413.224-56'";
+    $query = "SELECT * FROM cadastro_usuario";
+    //$query = "SELECT codigo_usuario, nome_completo, cpf, matricula, login, tipo_usuario FROM cadastro_usuario WHERE cpf = '089.413.224-56'";
     $resultado = mysql_query($query, $conexao);
     $linhas = mysql_num_rows($resultado);
 
@@ -95,5 +87,6 @@ echo '<table>';
         	echo 'nenhum dado recebido!';
         }
 ?>
+</div>
 </body>
 </html>
