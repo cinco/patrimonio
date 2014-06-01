@@ -36,7 +36,5 @@
 <a href="cadastrousuario.php">Cadastro de Usuários!</a>
 <br>
 <a href="listausuario.php">Listar Usuários!</a>
-<br>
-<a href="alterarusuario.php">Alterar Usuário!</a>
 </body>
 </html>

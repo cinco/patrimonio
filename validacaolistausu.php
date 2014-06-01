@@ -27,6 +27,10 @@
 	$metododebusca = $_POST['mtbusca'];
 	$dadoparabusca = $_POST['dadobuscado'];
 	
+    //Variável de Sessão para armazenar método e informação para busca
+    $_SESSION['metbusca'] = $metododebusca;
+    $_SESSION['infobusca'] = $dadoparabusca;
+
 	echo ('Você está logado com a conta: ' . $_SESSION['login']);
 	echo '<br><br>';
 if 	($dadoparabusca != ""){
@@ -42,6 +46,9 @@ if 	($dadoparabusca != ""){
         if ($linhas){
 
         	echo '<table>';
+            $cor = "#90EE90";
+            echo "<tr bgcolor=\"$cor\"><td>Código</td><td>Nome</td><td>CPF</td><td>Matricula</td><td>Login</td><td>Tipo do Usuário</td>";
+
             while($escreve = mysql_fetch_array($resultado)){
         		
                 $codigo = $escreve['codigo_usuario'];
@@ -50,6 +57,7 @@ if 	($dadoparabusca != ""){
                 $matricula = $escreve['matricula'];
                 $login = $escreve['login'];
                 $tipousuario = $escreve['tipo_usuario'];
+                $_SESSION['tipousu'] = $tipousuario;
 
                     if ($linhas %2 == 0){
 
@@ -61,16 +69,23 @@ if 	($dadoparabusca != ""){
                     $cor = "#E2EFFE";
 
                     }
-                echo "<tr bgcolor=\"$cor\"><td>Código</td><td>Nome</td><td>CPF</td><td>Matricula</td><td>Login</td><td>Tipo do Usuário</td>";
                 echo "<tr bgcolor=\"$cor\"><td>&nbsp;$codigo</td><td>&nbsp;$nome</td><td>&nbsp;$cpf</td><td>&nbsp;$matricula</td><td>&nbsp;$login</td><td>&nbsp;$tipousuario</td>";
 	           	//echo $escreve['codigo_usuario'] . " " . $escreve['nome_completo'] . " " . $escreve['cpf'] . " " . $escreve['matricula'] . " " . $escreve['login'] . " " . $escreve['tipo_usuario'] . "<br>";
-     
+                
             }
+            
             echo '</table>';
+            echo '<br>';
+            echo '<a href="alterarusuario.php">Alterar Usuário!</a>';
+            echo '<br>';
+            echo '<a href="listausuario.php">Voltar</a>';
+        
         }
 
         else {
+
         	echo 'nenhum dado recebido!';
+
         }
     }
 
@@ -85,6 +100,9 @@ if 	($dadoparabusca != ""){
         if ($linhas){
 
         	echo '<table>';
+            $cor = "#90EE90";
+            echo "<tr bgcolor=\"$cor\"><td>Código</td><td>Nome</td><td>CPF</td><td>Matricula</td><td>Login</td><td>Tipo do Usuário</td>";
+
             while($escreve = mysql_fetch_array($resultado)){
         		
                 $codigo = $escreve['codigo_usuario'];
@@ -105,16 +123,24 @@ if 	($dadoparabusca != ""){
 
                     }
 
-                echo "<tr bgcolor=\"$cor\"><td>Código</td><td>Nome</td><td>CPF</td><td>Matricula</td><td>Login</td><td>Tipo do Usuário</td>";
                 echo "<tr bgcolor=\"$cor\"><td>&nbsp;$codigo</td><td>&nbsp;$nome</td><td>&nbsp;$cpf</td><td>&nbsp;$matricula</td><td>&nbsp;$login</td><td>&nbsp;$tipousuario</td>";
      
             }
+            
             echo '</table>';
+            echo '<br>';
+            echo '<a href="alterarusuario.php">Alterar Usuário!</a>';
+            echo '<br>';
+            echo '<a href="listausuario.php">Voltar</a>';
+
         }
 
         else {
+
         	echo 'nenhum dado recebido!';
+
         }
+
     }
 
     if ($metododebusca == "matricula"){
@@ -128,6 +154,9 @@ if 	($dadoparabusca != ""){
         if ($linhas){
 
         	echo '<table>';
+            $cor = "#90EE90";
+            echo "<tr bgcolor=\"$cor\"><td>Código</td><td>Nome</td><td>CPF</td><td>Matricula</td><td>Login</td><td>Tipo do Usuário</td>";
+            
             while($escreve = mysql_fetch_array($resultado)){
         		
                 $codigo = $escreve['codigo_usuario'];
@@ -148,16 +177,24 @@ if 	($dadoparabusca != ""){
 
                     }
 
-                echo "<tr bgcolor=\"$cor\"><td>Código</td><td>Nome</td><td>CPF</td><td>Matricula</td><td>Login</td><td>Tipo do Usuário</td>";
                 echo "<tr bgcolor=\"$cor\"><td>&nbsp;$codigo</td><td>&nbsp;$nome</td><td>&nbsp;$cpf</td><td>&nbsp;$matricula</td><td>&nbsp;$login</td><td>&nbsp;$tipousuario</td>";
      
             }
+
             echo '</table>';
+            echo '<br>';
+            echo '<a href="alterarusuario.php">Alterar Usuário!</a>';
+            echo '<br>';
+            echo '<a href="listausuario.php">Voltar</a>';
+
         }
 
         else {
+
         	echo 'nenhum dado recebido!';
+
         }
+
     }
 
 }	elseif ($metododebusca == "todos"){
@@ -199,12 +236,19 @@ if 	($dadoparabusca != ""){
                 echo "<tr bgcolor=\"$cor\"><td>&nbsp;$codigo</td><td>&nbsp;$nome</td><td>&nbsp;$cpf</td><td>&nbsp;$matricula</td><td>&nbsp;$login</td><td>&nbsp;$tipousuario</td>";
      
             }
+
             echo '</table>';
+            echo '<br>';
+            echo '<a href="listausuario.php">Voltar</a>';
+
         }
 
         else {
+
         	echo 'nenhum dado recebido!';
+
         }
+
     }
 
     else {
@@ -212,7 +256,7 @@ if 	($dadoparabusca != ""){
     	echo 'Nenhum dado fornecido para busca!';
     }
 
-    
 ?>
+
 </body>
 </html>
