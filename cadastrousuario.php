@@ -52,7 +52,7 @@
 			<input type="password" name="confirmarsenha" id="confirmarsenha" /></td>
 	</tr>
 	<tr>
-		<td><label>O usuário é Administrador?</label>
+		<td><label>Administrador?</label>
 			<input type="radio" name="tipousuario" id="tipousuario" value="1"> Sim </input>
 			<input type="radio" name="tipousuario" id="tipousuario" value="0"> Não </input>
 
@@ -61,7 +61,7 @@
 			<option>Selecione a empresa...</option>
 			<?php
 				 include 'conexaobd.php';
-				 $listaempresas = mysql_query("SELECT codigo_empresa, razao_social FROM cadastro_empresa");
+				 $listaempresas = mysql_query("SELECT codigo_empresa, razao_social FROM cadastro_empresa", $conexao);
 				 while($empresa = mysql_fetch_array($listaempresas)) { ?>
 				 <option value="<?php echo $empresa['codigo_empresa'] ?>"><?php echo $empresa['razao_social'] ?></option>
 				 <?php 

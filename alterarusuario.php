@@ -19,18 +19,33 @@
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="estilo.css">
 </head>
-
 <body> 
+<form action="alterarusuario.php" method="post" name="formalterausuario" id="formalterausuario">
+<?php
+    echo ('Você está logado com a conta: ' . $_SESSION['login']); 
+
+?>
+    <br>
+
+    Insira o cpf para Consulta: <input type="text" name="cpf" id="cpf" />
+</form>
 
 <?php
     
-    echo ('Você está logado com a conta: ' . $_SESSION['login']); 
-    echo '<br>';
+    include 'conexaobd.php';
+    $cpf = $_POST['cpf'];
+    $listausuarios = mysql_query("SELECT * FROM cadastro_usuario WHERE cpf = '$cpf'", $conexao);
+    $linhas = mysql_num_rows($listausuarios);
+
+    if ($linhas){
+
+    $nome = 
+    
+    }
+
     
 ?>
 <br>
 <br>
-<a href="cadastrousuario.php">Cadastro de Usuários!</a>
-<a href="listausuario.php">Listar Usuários!</a>
 </body>
 </html>
