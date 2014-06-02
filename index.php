@@ -32,13 +32,19 @@
     
 ?>
 <br>
+<a href="#">Menu Usuário</a>
+<br>
 <br>
 <a href="cadastrousuario.php">Cadastro de Usuário!</a>
 <br>
 <a href="listausuario.php">Listar Usuários!</a>
 <br>
 <br>
+<a href="#">Menu Empresa</a>
 <br>
-<a href="cadastrarempresa.php">Cadastrar Empresa!</a>
+<br>
+<a href="cadastroempresa.php">Cadastrar Empresa!</a>
+<br>
+<a href="listaempresa.php">Listar Empresas!</a>
 </body>
 </html>

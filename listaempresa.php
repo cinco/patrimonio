@@ -33,9 +33,8 @@
 	<p class = "formulariolistaempresa">
 		<p>Meio usado para realização de Busca:
         <input type="radio" name="mtbusca" id="razaosocial" value="razaosocial">Razão Social</input>
-		<input type="radio" name="mtbusca" id="cnpj" value="cnpj">CPF</input>
-		<input type="radio" name="mtbusca" id="matricula" value="matricula">Matricula</input>
-        <input type="radio" name="mtbusca" id="todos" value="todos">Todos</input> </p>
+		<input type="radio" name="mtbusca" id="cnpj" value="cnpj">CNPJ</input>
+        <input type="radio" name="mtbusca" id="todas" value="todas">Todas</input> </p>
         <p>Parâmetro de Busca:
 		<input type="text" name="dadobuscado" id="dadobuscado" /></p>
 		<input type="submit" value="Buscar"> 
@@ -44,7 +43,7 @@
 </form>
 <br>
 <br>
-<b>OBRSERVAÇÃO: </b>Para selecionar TODOS, não é necessário passar nenhum Parâmetro de busca!
+<b>OBRSERVAÇÃO: </b>Para selecionar TODAS, não é necessário passar nenhum Parâmetro de busca!
 <br>
 <a href="index.php">Menu</a>
 </div>

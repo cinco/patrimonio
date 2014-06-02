@@ -48,7 +48,7 @@ if 	($dadoparabusca != ""){
 
         	echo '<table>';
             $cor = "#90EE90";
-            echo "<tr bgcolor=\"$cor\"><td>Código</td><td>Nome</td><td>CPF</td><td>Matricula</td><td>Login</td><td>Tipo do Usuário</td>";
+            echo "<tr bgcolor=\"$cor\"><td>Código</td><td>Nome</td><td>CPF</td><td>Matricula</td><td>Login</td><td>Tipo do Usuário</td></tr>";
 
             while($escreve = mysql_fetch_array($resultado)){
         		
@@ -69,7 +69,7 @@ if 	($dadoparabusca != ""){
                     $cor = "#E2EFFE";
 
                     }
-                echo "<tr bgcolor=\"$cor\"><td>&nbsp;$codigo</td><td>&nbsp;$nome</td><td>&nbsp;$cpf</td><td>&nbsp;$matricula</td><td>&nbsp;$login</td><td>&nbsp;$tipousuario</td>";
+                echo "<tr bgcolor=\"$cor\"><td>&nbsp;$codigo</td><td>&nbsp;$nome</td><td>&nbsp;$cpf</td><td>&nbsp;$matricula</td><td>&nbsp;$login</td><td>&nbsp;$tipousuario</td></tr>";
 	           	//echo $escreve['codigo_usuario'] . " " . $escreve['nome_completo'] . " " . $escreve['cpf'] . " " . $escreve['matricula'] . " " . $escreve['login'] . " " . $escreve['tipo_usuario'] . "<br>";
                 
             }
@@ -105,7 +105,7 @@ if 	($dadoparabusca != ""){
 
         	echo '<table>';
             $cor = "#90EE90";
-            echo "<tr bgcolor=\"$cor\"><td>Código</td><td>Nome</td><td>CPF</td><td>Matricula</td><td>Login</td><td>Tipo do Usuário</td>";
+            echo "<tr bgcolor=\"$cor\"><td>Código</td><td>Nome</td><td>CPF</td><td>Matricula</td><td>Login</td><td>Tipo do Usuário</td></tr>";
 
             while($escreve = mysql_fetch_array($resultado)){
         		
@@ -127,7 +127,7 @@ if 	($dadoparabusca != ""){
 
                     }
 
-                echo "<tr bgcolor=\"$cor\"><td>&nbsp;$codigo</td><td>&nbsp;$nome</td><td>&nbsp;$cpf</td><td>&nbsp;$matricula</td><td>&nbsp;$login</td><td>&nbsp;$tipousuario</td>";
+                echo "<tr bgcolor=\"$cor\"><td>&nbsp;$codigo</td><td>&nbsp;$nome</td><td>&nbsp;$cpf</td><td>&nbsp;$matricula</td><td>&nbsp;$login</td><td>&nbsp;$tipousuario</td></tr>";
      
             }
             
@@ -162,7 +162,7 @@ if 	($dadoparabusca != ""){
 
         	echo '<table>';
             $cor = "#90EE90";
-            echo "<tr bgcolor=\"$cor\"><td>Código</td><td>Nome</td><td>CPF</td><td>Matricula</td><td>Login</td><td>Tipo do Usuário</td>";
+            echo "<tr bgcolor=\"$cor\"><td>Código</td><td>Nome</td><td>CPF</td><td>Matricula</td><td>Login</td><td>Tipo do Usuário</td></tr>";
             
             while($escreve = mysql_fetch_array($resultado)){
         		
@@ -184,7 +184,7 @@ if 	($dadoparabusca != ""){
 
                     }
 
-                echo "<tr bgcolor=\"$cor\"><td>&nbsp;$codigo</td><td>&nbsp;$nome</td><td>&nbsp;$cpf</td><td>&nbsp;$matricula</td><td>&nbsp;$login</td><td>&nbsp;$tipousuario</td>";
+                echo "<tr bgcolor=\"$cor\"><td>&nbsp;$codigo</td><td>&nbsp;$nome</td><td>&nbsp;$cpf</td><td>&nbsp;$matricula</td><td>&nbsp;$login</td><td>&nbsp;$tipousuario</td></tr>";
      
             }
 
@@ -210,7 +210,7 @@ if 	($dadoparabusca != ""){
 
 }	elseif ($metododebusca == "todos"){
 	
-   	echo 'Filtro usado na busca = Todos';
+   	echo 'Filtro usado na busca: Todos';
 	echo '<table>';
     $query = "SELECT * FROM cadastro_usuario";
     $resultado = mysql_query($query, $conexao) or die (mysql_error());
@@ -220,7 +220,7 @@ if 	($dadoparabusca != ""){
 
         	echo '<table>';
         	$cor = "#90EE90";
-            echo "<tr bgcolor=\"$cor\"><td>Código</td><td>Nome</td><td>CPF</td><td>Matricula</td><td>Login</td><td>Tipo do Usuário</td>";
+            echo "<tr bgcolor=\"$cor\"><td>Código</td><td>Nome</td><td>CPF</td><td>Matricula</td><td>Login</td><td>Tipo do Usuário</td></tr>";
 
             while($escreve = mysql_fetch_array($resultado)){
         		
@@ -244,7 +244,7 @@ if 	($dadoparabusca != ""){
 
                     }
 
-                echo "<tr bgcolor=\"$cor\"><td>&nbsp;$codigo</td><td>&nbsp;$nome</td><td>&nbsp;$cpf</td><td>&nbsp;$matricula</td><td>&nbsp;$login</td><td>&nbsp;$tipousuario</td>";
+                echo "<tr bgcolor=\"$cor\"><td>&nbsp;$codigo</td><td>&nbsp;$nome</td><td>&nbsp;$cpf</td><td>&nbsp;$matricula</td><td>&nbsp;$login</td><td>&nbsp;$tipousuario</td></tr>";
      
             }
 
