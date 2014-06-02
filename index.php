@@ -33,8 +33,12 @@
 ?>
 <br>
 <br>
-<a href="cadastrousuario.php">Cadastro de Usuários!</a>
+<a href="cadastrousuario.php">Cadastro de Usuário!</a>
 <br>
 <a href="listausuario.php">Listar Usuários!</a>
+<br>
+<br>
+<br>
+<a href="cadastrarempresa.php">Cadastrar Empresa!</a>
 </body>
 </html>

@@ -55,6 +55,7 @@
 		<td><label>Administrador?</label>
 			<input type="radio" name="tipousuario" id="tipousuario" value="1"> Sim </input>
 			<input type="radio" name="tipousuario" id="tipousuario" value="0"> Não </input>
+		</td>
 
 		<td><label>Empresa: </label>
 			<select name="codigoempresa" id="codigoempresa">
@@ -77,8 +78,11 @@
 	</tr>
 	</table>
 		<br>
+		<br>
+		<a href="index.php">Menu</a>
 	</p>
 </form>
 </div>
+
 </body>
 </html>

@@ -3,19 +3,19 @@
 	session_start();
  
 	//Caso o usuário não esteja autenticado, limpa os dados e redireciona para a pagina login.php
-	if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
+	if (!isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
     
     session_destroy();
     unset ($_SESSION['login']);
     unset ($_SESSION['senha']);
     header('location:login.php');
 }
-?>
 
+?>
 <html>
 
 <head>
-<title>Alterar Usuário</title>
+<title>Excluir Usuário</title>
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="estilo.css">
 </head>
@@ -31,10 +31,10 @@
 ?>
 
 
-<div id = "areaalteracaousuario">
-    <p class = "alteracaousuario">Alterar Usuário</p>
-        <form method="post" action="validacaoaltusu.php" name="formalteracaousuario" id="formalteracaousuario" >
-    <p class = "formularioalteracaousuario">
+<div id = "areaexclusaousuario">
+    <p class = "exclusaousuario">Alterar Usuário</p>
+        <form method="post" action="validacaodelusu.php" name="formexclusaousuario" id="formexclusaousuario" >
+    <p class = "formularioexclusaousuario">
         <br>
     <table>
 
@@ -45,7 +45,7 @@
 
     if ($metbusca == "nome"){
 
-        $query = "SELECT * FROM cadastro_usuario WHERE nome_completo = '$infobusca'";
+        $query = "SELECT nome_completo, cpf, matricula, login, senha, confirmar_senha, tipo_usuario, razao_social FROM cadastro_usuario INNER JOIN cadsatro_empresa WHERE nome_completo = '$infobusca'";
         $resultado = mysql_query($query, $conexao);
         
         while($escreve = mysql_fetch_array($resultado)){
@@ -56,6 +56,8 @@
             $login = $escreve['login'];
             $senha = $escreve['senha'];
             $confsenha = $escreve['confirmar_senha'];
+            $tpusuario = $escreve['tipo_usuario'];
+            $fkcodemp = $escreve['razao_social'];	
 
         }
 
@@ -63,7 +65,7 @@
 
     }else if ($metbusca == "cpf"){
 
-        $query = "SELECT * FROM cadastro_usuario WHERE cpf = '$infobusca'";
+        $query = "SELECT nome_completo, cpf, matricula, login, senha, confirmar_senha, tipo_usuario, razao_social FROM cadastro_usuario INNER JOIN cadsatro_empresa WHERE cpf = '$infobusca'";
         $resultado = mysql_query($query, $conexao);
 
         while($escreve = mysql_fetch_array($resultado)){
@@ -74,12 +76,14 @@
             $login = $escreve['login'];
             $senha = $escreve['senha'];
             $confsenha = $escreve['confirmar_senha'];
+            $tpusuario = $escreve['tipo_usuario'];
+            $fkcodemp = $escreve['razao_social'];
             
         }
 
     }else if ($metbusca == "matricula"){
 
-        $query = "SELECT * FROM cadastro_usuario WHERE matricula = '$infobusca'";
+        $query = "SELECT nome_completo, cpf, matricula, login, senha, confirmar_senha, tipo_usuario, razao_social FROM cadastro_usuario INNER JOIN cadsatro_empresa WHERE matricula = '$infobusca'";
         $resultado = mysql_query($query, $conexao);
 
         while($escreve = mysql_fetch_array($resultado)){
@@ -91,6 +95,8 @@
             $login = $escreve['login'];
             $senha = $escreve['senha'];
             $confsenha = $escreve['confirmar_senha'];
+            $tpusuario = $escreve['tipo_usuario'];
+            $fkcodemp = $escreve['razao_social'];
             
         }
     }
@@ -98,40 +104,39 @@
     ?>
     <tr>
         <td><label>Nome Completo: </label>
-            <input type="text" name="nomecompleto" id="nomecompleto" value="<?php echo $nome ?>"/></td>
+            <input type="text" name="nomecompleto" id="nomecompleto" value="<?php echo $nome ?>" READONLY /></td>
         <td><label>CPF: </label>
-            <input type="text" name="cpf" id="cpf" value="<?php echo $cpf ?>"/></td>
+            <input type="text" name="cpf" id="cpf" value="<?php echo $cpf ?>"READONLY /></td>
     </tr>
     <tr>
         <td><label>Matricula: </label>
-            <input type="text" name="matricula" id="matricula" value="<?php echo $matricula ?>" /></td>
+            <input type="text" name="matricula" id="matricula" value="<?php echo $matricula ?>" READONLY /></td>
         <td><label>Login: </label>
-            <input type="text" name="login" id="login" value="<?php echo $login ?>"/></td>
+            <input type="text" name="login" id="login" value="<?php echo $login ?>" READONLY /></td>
     </tr>
     <tr>
         <td><label>Senha: </label>
-            <input type="password" name="senha" id="senha" value="<?php echo $senha ?>"/></td>
+            <input type="password" name="senha" id="senha" value="<?php echo $senha ?>" READONLY /></td>
         <td><label>Confirmar Senha: </label>
-            <input type="password" name="confirmarsenha" id="confirmarsenha" value="<?php echo $confsenha ?>"/></td>
+            <input type="password" name="confirmarsenha" id="confirmarsenha" value="<?php echo $confsenha ?>" READONLY /></td>
     </tr>
     <tr>
-        <td><label>Administrador?</label>
-            <input type="radio" name="tipousuario" id="tipousuario" value="1"> Sim </input>
-            <input type="radio" name="tipousuario" id="tipousuario" value="0"> Não </input>
+    	<?php
 
-        <td><label>Empresa: </label>
-            <select name="codigoempresa" id="codigoempresa">
-            <option>Selecione a empresa...</option>
+    	if ($tpusuario == "1"){
 
-            <?php
-                 $listaempresas = mysql_query("SELECT codigo_empresa, razao_social FROM cadastro_empresa", $conexao);
-                 while($empresa = mysql_fetch_array($listaempresas)) { ?>
-                 <option value="<?php echo $empresa['codigo_empresa'] ?>"><?php echo $empresa['razao_social'] ?></option>
-                 <?php 
-                 mysql_close($conexao);
-                 }
+        	echo '<td><label>Administrador?</label>';
+            echo ' Sim';
 
+        } else {
+
+        	echo '<td><label>Administrador? </label>';
+            echo ' Não';
+       
+        }
             ?>
+        <td><label>Empresa: </label>
+            <input type="text" name="login" id="login" value="<?php echo $login ?>" READONLY /></td>
 
             </select>
         </td>
@@ -142,7 +147,6 @@
         
     </tr>
     <tr>
-        <td><input type="reset" value="Limpar Campos"/></td>
         <td><input type="Submit" value="Alterar Usuário" /></td>
     </tr>
     </table>
@@ -151,6 +155,6 @@
 </form>
 </div>
 <br>
-<a href="listausuario.php">Voltar</a>
+<a href="listausuario.php">Realizar outra busca!</a>
 </body>
 </html>

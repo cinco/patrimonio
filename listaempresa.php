@@ -15,7 +15,7 @@
 <html>
 
 <head>
-<title>Lista de Usuários</title>
+<title>Lista de Empresas</title>
 <link rel="stylesheet" type="text/css" href="estilo.css">
 <meta charset="utf-8">
 </head>
@@ -28,12 +28,12 @@
 
 	?>
 <div id = "arealistausuario">
-	<p class = "listausuario">Buscar Usuário</p>
-		<form method="post" action="validacaolistausu.php" name="formlistausuario" id="formlistausuario" >
-	<p class = "formulariolistausuario">
-		<p>Meio para realização de Busca:
-        <input type="radio" name="mtbusca" id="nome" value="nome">Nome</input>
-		<input type="radio" name="mtbusca" id="cpf" value="cpf">CPF</input>
+	<p class = "listausuario">Buscar Empresa: </p>
+		<form method="post" action="validacaolistaemp.php" name="formlistaempresa" id="formlistaempresa" >
+	<p class = "formulariolistaempresa">
+		<p>Meio usado para realização de Busca:
+        <input type="radio" name="mtbusca" id="razaosocial" value="razaosocial">Razão Social</input>
+		<input type="radio" name="mtbusca" id="cnpj" value="cnpj">CPF</input>
 		<input type="radio" name="mtbusca" id="matricula" value="matricula">Matricula</input>
         <input type="radio" name="mtbusca" id="todos" value="todos">Todos</input> </p>
         <p>Parâmetro de Busca:

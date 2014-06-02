@@ -38,17 +38,73 @@
 	color: white;
 
 }
+
+#arealistausuario {
+	border: 1px solid blue;
+	border-radius: 5px;
+	width: 700px;
+	height: 500px;
+	position: absolute;
+	top: 50%;
+	margin-top: -200px;
+	left: 50%;
+	margin-left: -300px;
+	background-color: gray;
+	color: white;
+
+}
+
+#areaalteracaousuario {
+	border: 1px solid blue;
+	border-radius: 5px;
+	width: 700px;
+	height: 500px;
+	position: absolute;
+	top: 50%;
+	margin-top: -200px;
+	left: 50%;
+	margin-left: -300px;
+	background-color: gray;
+	color: white;
+
+}
+
+#areacadastroempresa {
+	border: 1px solid blue;
+	border-radius: 5px;
+	width: 900px;
+	height: 500px;
+	position: absolute;
+	top: 50%;
+	margin-top: -200px;
+	left: 50%;
+	margin-left: -300px;
+	background-color: gray;
+	color: white;
+
+}
+
 #oculta {
 	opacity: 0.0;
 }
 
-.cadastrousuario {
+.cadastrousuario{
 	border-bottom: 1px solid blue;
 	text-align: center;
 	margin-top: 3px;
 }
 
-.formulariocadastrousuario {
+.formulariocadastrousuario{
+	text-align: center;
+	margin-top: 10px; 
+}
+
+.formularioalteracaousuario{
+	text-align: center;
+	margin-top: 10px; 
+}
+
+.formulariocadastroempresa{
 	text-align: center;
 	margin-top: 10px; 
 }

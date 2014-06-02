@@ -35,4 +35,7 @@
 
 	echo ('Cadastro Realizado com sucesso!');
 	mysql_close($conexao);
+
+	echo '<br>';
+    echo '<a href="listausuario.php">Voltar</a>';
 ?>

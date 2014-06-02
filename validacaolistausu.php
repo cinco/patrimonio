@@ -34,13 +34,14 @@
 	echo ('Você está logado com a conta: ' . $_SESSION['login']);
 	echo '<br><br>';
 if 	($dadoparabusca != ""){
+    
 	if ($metododebusca == "nome"){
 
 	echo 'Filtro usado na busca: ' . $dadoparabusca;
 	echo '<table>';
     $query = "SELECT * FROM cadastro_usuario WHERE nome_completo = '$dadoparabusca'";
     //$query = "SELECT codigo_usuario, nome_completo, cpf, matricula, login, tipo_usuario FROM cadastro_usuario WHERE cpf = '089.413.224-56'";
-    $resultado = mysql_query($query, $conexao);
+    $resultado = mysql_query($query, $conexao) or die (mysql_error());
     $linhas = mysql_num_rows($resultado);
 
         if ($linhas){
@@ -57,7 +58,6 @@ if 	($dadoparabusca != ""){
                 $matricula = $escreve['matricula'];
                 $login = $escreve['login'];
                 $tipousuario = $escreve['tipo_usuario'];
-                $_SESSION['tipousu'] = $tipousuario;
 
                     if ($linhas %2 == 0){
 
@@ -78,13 +78,17 @@ if 	($dadoparabusca != ""){
             echo '<br>';
             echo '<a href="alterarusuario.php">Alterar Usuário!</a>';
             echo '<br>';
+            //echo '<a href="excluirusuario.php">Excluir Usuário!</a>';
+            echo '<br>';
             echo '<a href="listausuario.php">Voltar</a>';
+            mysql_close($conexao);
         
         }
 
         else {
 
         	echo 'nenhum dado recebido!';
+            mysql_close($conexao);
 
         }
     }
@@ -94,7 +98,7 @@ if 	($dadoparabusca != ""){
 	echo 'Filtro usado na busca: ' . $dadoparabusca;
 	echo '<table>';
     $query = "SELECT * FROM cadastro_usuario WHERE cpf = '$dadoparabusca'";
-    $resultado = mysql_query($query, $conexao);
+    $resultado = mysql_query($query, $conexao) or die (mysql_error());
     $linhas = mysql_num_rows($resultado);
 
         if ($linhas){
@@ -131,13 +135,16 @@ if 	($dadoparabusca != ""){
             echo '<br>';
             echo '<a href="alterarusuario.php">Alterar Usuário!</a>';
             echo '<br>';
+            //echo '<a href="excluirusuario.php">Excluir Usuário!</a>';
+            echo '<br>';
             echo '<a href="listausuario.php">Voltar</a>';
-
+            mysql_close($conexao);
         }
 
         else {
 
         	echo 'nenhum dado recebido!';
+            mysql_close($conexao);
 
         }
 
@@ -148,7 +155,7 @@ if 	($dadoparabusca != ""){
    	echo 'Filtro usado na busca: ' . $dadoparabusca;
 	echo '<table>';
     $query = "SELECT * FROM cadastro_usuario WHERE matricula = '$dadoparabusca'";
-    $resultado = mysql_query($query, $conexao);
+    $resultado = mysql_query($query, $conexao) or die (mysql_error());
     $linhas = mysql_num_rows($resultado);
 
         if ($linhas){
@@ -185,13 +192,17 @@ if 	($dadoparabusca != ""){
             echo '<br>';
             echo '<a href="alterarusuario.php">Alterar Usuário!</a>';
             echo '<br>';
+            //echo '<a href="excluirusuario.php">Excluir Usuário!</a>';
+            echo '<br>';
             echo '<a href="listausuario.php">Voltar</a>';
+            mysql_close($conexao);
 
         }
 
         else {
 
         	echo 'nenhum dado recebido!';
+            mysql_close($conexao);
 
         }
 
@@ -202,7 +213,7 @@ if 	($dadoparabusca != ""){
    	echo 'Filtro usado na busca = Todos';
 	echo '<table>';
     $query = "SELECT * FROM cadastro_usuario";
-    $resultado = mysql_query($query, $conexao);
+    $resultado = mysql_query($query, $conexao) or die (mysql_error());
     $linhas = mysql_num_rows($resultado);
 
         if ($linhas){
@@ -239,13 +250,16 @@ if 	($dadoparabusca != ""){
 
             echo '</table>';
             echo '<br>';
+            mysql_close($conexao);
             echo '<a href="listausuario.php">Voltar</a>';
+
 
         }
 
         else {
 
         	echo 'nenhum dado recebido!';
+            mysql_close($conexao);
 
         }
 
@@ -254,6 +268,9 @@ if 	($dadoparabusca != ""){
     else {
 
     	echo 'Nenhum dado fornecido para busca!';
+        echo '<br>';
+        echo '<a href="listausuario.php">Voltar</a>';
+        mysql_close($conexao);
     }
 
 ?>
