@@ -32,19 +32,55 @@
     
 ?>
 <br>
-<a href="#">Menu Usuário</a>
-<br>
-<br>
-<a href="cadastrousuario.php">Cadastro de Usuário!</a>
-<br>
-<a href="listausuario.php">Listar Usuários!</a>
-<br>
-<br>
-<a href="#">Menu Empresa</a>
-<br>
-<br>
-<a href="cadastroempresa.php">Cadastrar Empresa!</a>
-<br>
-<a href="listaempresa.php">Listar Empresas!</a>
+
+<div class="drop">
+<ul class="drop_menu">
+<li><a href='#'>Cadastros</a>
+    <ul>
+    <li><a href='cadastrousuario.php'>Usuário</a></li>
+    <li><a href='#'>Empresas</a>
+        <ul>
+        <li><a href='cadastroempresa.php'>Empresa</a></li>
+        <li><a href='#'>Departamento</a></li>
+        <li><a href='#'>Sub Departamento</a></li>
+        </ul>
+    </li>
+    <li><a href='cadastrobem.php'>Bens</a></li>
+    </ul>
+</li>
+<li><a href='#'>Movimentações</a>
+    <ul>
+    <li><a href='#'>Inclusão</a></li>
+    <li><a href='#'>Retorno</a></li>
+    </ul>
+</li>
+<li><a href='#'>Consultas</a>
+    <ul>
+    <li><a href='#'>Cadastros</a>
+    <ul>
+        <li><a href='listausuario.php'>Usuário</a></li>
+        <li><a href='listaempresa.php'>Empresa</a></li>
+        <li><a href='#'>Bens</a></li>
+    </ul>
+    </li>
+    <li><a href='#'>Movimentações</a>
+    <ul>
+        <li><a href='#'>Por bem</a></li>
+        <li><a href='#'>Por empresa</a></li>
+        <li><a href='#'>Por data</a></li>
+    </ul>
+    </li>
+    <li><a href='#'>Patrimonio</a>
+    <ul>
+        <li><a href='#'>Por item</a></li>
+        <li><a href='#'>Por empresa</a></li>
+        <li><a href='#'>Total Geral</a></li>
+    </ul>
+    </li>
+    </ul>
+</li>
+</ul>
+
+</div>
 </body>
 </html>

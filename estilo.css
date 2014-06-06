@@ -108,3 +108,100 @@
 	text-align: center;
 	margin-top: 10px; 
 }
+
+*{
+    margin:0px;
+    padding:0px;
+}
+ul{
+    width:500px; /* tamanho da lista principal */
+    margin: 0 auto; /* para centralizar na pagina */
+    list-style:none;       
+}
+ul li{
+    float:left;
+    background-color:#FFFFFF;
+    position:relative; /* necessario para o item filho se posicionar relativo a esse que é o pai */
+}
+ul li a{
+    display:block;
+    padding:10px;
+    border:1px #000000 solid;
+    text-decoration: none;
+    color: #000000;
+}
+ul li:hover > a{ /* quando passarmos o mouse sobre a li colocamos estilo no a */
+    background-color:#0099FF;
+    color:#FFFFFF;
+}
+
+ul li ul{
+    display:none;
+    position:absolute;
+}
+
+ul li:hover ul{ /* quando passar sobre a li aparecera o menu filho */
+    width:110px; /* tamanho do menu filho */
+    display:block;
+}
+ul li ul li{
+    width:110px;
+    cursor: pointer;
+}
+ul li ul li:hover > a{
+    background-color:#0099FF;
+    color:#FFFFFF;
+}
+ul li ul li ul li{
+    display:none;
+}
+
+ul li ul li ul{
+    top:0; /* para deixar o sub-menu na mesma linha do menu pai */
+}
+ul li ul li:hover ul li{
+    display:block;
+    width:130px;
+    left:100%; /* para deixar o sub-menu ao lado do menu pai */
+}
+/* CSSTerm.com Simple Horizontal DropDown CSS menu 
+
+.drop_menu {
+	background:#005555;
+	padding:0;
+	margin:0;
+	list-style-type:none;
+	height:30px;
+}
+.drop_menu li { float:left; }
+.drop_menu li a {
+	padding:9px 20px;
+	display:block;
+	color:#fff;
+	text-decoration:none;
+	font:12px arial, verdana, sans-serif;
+}
+
+Submenu */ /*
+.drop_menu ul {
+	position:absolute;
+	left:-9999px;
+	top:-9999px;
+	list-style-type:none;
+}
+.drop_menu li:hover { position:relative; background:#5FD367; }
+.drop_menu li:hover ul {
+	left:0px;
+	top:30px;
+	background:#5FD367;
+	padding:0px;
+}
+
+.drop_menu li:hover ul li a {
+	padding:5px;
+	display:block;
+	width:168px;
+	text-indent:15px;
+	background-color:#5FD367;
+}
+.drop_menu li:hover ul li a:hover { background:#005555; } */
