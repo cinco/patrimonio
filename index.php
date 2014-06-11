@@ -25,11 +25,11 @@
 <body> 
 
 <?php
-    
+
     include 'funcoes.php';
     boasvindas($_SESSION['login']);
-    echo ('Você está logado com a conta: ' . $_SESSION['login']); 
-    
+    echo ('Você está logado com a conta: ' . $_SESSION['login']);
+
 ?>
 <br>
 
@@ -80,7 +80,6 @@
     </ul>
 </li>
 </ul>
-
 </div>
 </body>
 </html>

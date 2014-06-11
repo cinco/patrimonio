@@ -1,6 +1,8 @@
 <?php
-	/* Obs: Funções para exibição de alerta javascript segue com esse padrão de nomeclatura das variaveis (msg + codigo + (nome ou abreviatura)da função)
-    
+	/* 
+    Obs: Funções para exibição de alerta javascript segue com esse padrão de 
+    nomeclatura das variaveis (msg + codigo + (nome ou abreviatura)da função)
+    Obs:
 	 */
     include 'conexaobd.php';
 
@@ -20,5 +22,10 @@
         echo '<script type="text/javascript">alert("' . $msgprebvf . '"); </script>';
     }
 
-    
+    function sair(){
+    session_destroy();
+    unset ($_SESSION['login']);
+    unset ($_SESSION['senha']);
+    header('location:login.php');
+    }
 ?>
