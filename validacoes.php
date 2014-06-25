@@ -1,5 +1,6 @@
 <?php ob_start();
 
+	function validarlogin(){
 	//Acessando variaveis do arquivo conexaobd.php e funcoes.php
 	include 'conexaobd.php';
 	include 'funcoes.php';
@@ -21,6 +22,7 @@
 
 		session_start();
 		$_SESSION['login'] = $login;
+		$_SESSION['senha'] = $senha;
 		$_SESSION['count'] = 1;
 		mysql_close($conexao);
 		header('location:index.php');
@@ -37,8 +39,11 @@
 
 		session_destroy();
 		unset($_SESSION['login']);
+		unset($_SESSION['senha']);
 		unset($_SESSION['count']);
 		mysql_close($conexao);
 		header('location:login.php');
 	}
+
+}
 ?>

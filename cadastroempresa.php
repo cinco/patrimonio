@@ -3,11 +3,10 @@
 	session_start();
  
 	//Caso o usuário não esteja autenticado, limpa os dados e redireciona para a pagina login.php
-	if ( !isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
+	if (!isset($_SESSION['login'])) {
     
     session_destroy();
     unset ($_SESSION['login']);
-    unset ($_SESSION['senha']);
     header('location:login.php');
 }
 ?>

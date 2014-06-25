@@ -3,11 +3,11 @@
 	session_start();
  
 	//Caso o usuário não esteja autenticado, limpa os dados e redireciona para a pagina login.php
-	if (!isset($_SESSION['login']) and !isset($_SESSION['senha']) ) {
+	if (!isset($_SESSION['login'])) {
     
     session_destroy();
     unset ($_SESSION['login']);
-    unset ($_SESSION['senha']);
+    unset ($_SESSION['count']);
     header('location:login.php');
 
     }
@@ -17,7 +17,7 @@
 <html>
 
 <head>
-<title>Index</title>
+<title>Patrimônio - Usuário: <?php echo $_SESSION['login']; ?></title>
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="estilo.css">
 </head>
@@ -25,10 +25,14 @@
 <body> 
 
 <?php
-
+    
     include 'funcoes.php';
+    $_SESSION['count'];
+
+    if ($_SESSION['count'] == 1){
     boasvindas($_SESSION['login']);
-    echo ('Você está logado com a conta: ' . $_SESSION['login']);
+    $_SESSION['count']++;
+    }
 
 ?>
 <br>
